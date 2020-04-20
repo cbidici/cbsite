@@ -4,8 +4,6 @@ from .base import *
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
 ALLOWED_HOSTS = ['.bidici.com']
 ALLOW_ORIGIN = "http://bidici.com"
 
