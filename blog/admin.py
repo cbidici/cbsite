@@ -2,4 +2,13 @@ from django.contrib import admin
 
 from .models import Post
 
-admin.site.register(Post)
+
+class PostAdmin(admin.ModelAdmin):
+    fieldsets = (('Meta', {
+        'fields': ('title', 'owner',)
+    }), ('Post', {
+        'classes': ('wide',), 'fields': ('text',),
+    }),)
+
+
+admin.site.register(Post, PostAdmin)

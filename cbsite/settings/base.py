@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'blog.apps.BlogConfig',
+    'markdownme.apps.MarkdownmeConfig',
 ]
 
 MIDDLEWARE = [

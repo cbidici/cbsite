@@ -1,0 +1,30 @@
+{% load static %}
+<style>
+    .markdownme ul, ol, p {
+        margin-left: 0px !important;
+    }
+    .markdownme ul {
+        padding-left: 0px !important;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'markdownme/css/editormd.min.css' %}">
+<div class="markdownme">
+    <div id="test-editormd" style="border-radius: 4px; border: 1px solid #ccc">
+        <textarea style="display:none;">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+    </div>
+</div>
+<script src="{% static 'markdownme/js/zepto.min.js' %}"></script>
+<script src="{% static 'markdownme/js/editormd.min.js' %}"></script>
+<script src="{% static 'markdownme/languages/en.js' %}"></script>
+<script type="text/javascript">
+    var testEditor;
+    django.jQuery(function() {
+        testEditor = editormd("test-editormd", {
+            width   : "100%",
+            name    : "{{ widget.name }}",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "{% static 'markdownme/lib/' %}",
+        });
+    });
+</script>
