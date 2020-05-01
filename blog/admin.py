@@ -7,7 +7,7 @@ class PostAdmin(admin.ModelAdmin):
     fieldsets = (('Meta', {
         'fields': ('title', 'owner',)
     }), ('Post', {
-        'classes': ('wide',), 'fields': ('text',),
+        'fields': ('text',),
     }),)
 
 
