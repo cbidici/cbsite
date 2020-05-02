@@ -7,8 +7,8 @@ class PostAdmin(admin.ModelAdmin):
     fieldsets = (('Meta', {
         'fields': ('title', 'owner',)
     }), ('Post', {
-        'fields': ('text',),
+        'classes': ('short',), 'fields': ('text',),
     }),)
 
 
-admin.site.register(Post, PostAdmin)
+admin.site.register(Post)

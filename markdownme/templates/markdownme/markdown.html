@@ -1,134 +1,29 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'markdownme/css/github.min.css' %}">
-<style>
-    .mdme {
-        width: 100vw;
-        max-width: 1000px;
-        display: table-cell;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    .mdme-nav {
-        border-bottom: 1px solid #eee;
-        height: 30px;
-        padding-left: 10px;
-    }
-    .mdme-nav button {
-        border: 1px solid #eee;
-        margin-left: 2px;
-        padding: 6px 20px;
-        margin-top: 4px;
-    }
-    .mdme button:focus {
-        outline: 0px;
-    }
-    .mdme-nav button.active {
-        border-bottom: 0px;
-        padding-bottom: 7px;
-    }
-    .mdme-container {
-        padding: 0px;
-    }
-    .mdme-tab {
-        width: 100%;
-        overflow: auto;
-        min-height: 800px;
-        max-height: 800px;
-        padding: 6px 6px;
-        padding: 5px;
-        box-sizing: border-box;
-        margin: 0px 0px;
-        border: 0px;
-    }
-    .mdme-tab:focus {
-        outline: 0px;
-    }
-    .mdme ul {
-        margin-top: 1em !important;
-        margin-bottom: 1em !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 40px !important;
-    }
-    .mdme ul ul {
-        margin-top: 0em !important;
-        margin-bottom: 0em !important;
-    }
-    .mdme ol {
-        margin-top: 1em !important;
-        margin-bottom: 1em !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-left: 40px !important;
-    }
-    .mdme ol ol {
-        margin-top: 0em !important;
-        margin-bottom: 0em !important;
-    }
-    .mdme li {
-        padding: 0 0;
-    }
-    .mdme ul li {
-        display: list-item !important;
-        list-style-type: disc !important;
-    }
-    .mdme ul li ul li {
-        list-style-type: circle !important;
-    }
-    .mdme ul li ul li ul li{
-        list-style-type: square !important;
-    }
-    .mdme pre {
-        font-family: monospace, "Bitstream Vera Sans Mono",Courier, "Courier New";
-        border-radius: 4px;
-        padding: 1em !important;
-        background-color: #f3f3f3 !important;
-        margin: 5px;
-    }
-    .mdme code {
-        font-family: monospace, "Bitstream Vera Sans Mono",Courier, "Courier New";
-    }
-
-</style>
 <div class="mdme">
     <div class="mdme-nav">
-        <button id="writeBut" type="button" class="active" onclick="openTab('write')">Write</button>
-        <button id="previewBut" type="button" onclick="openTab('preview')">Preview</button>
+        <button
+                id="write-{{ widget.name }}-But"
+                type="button"
+                class="active"
+                onclick="switchWritePreview('{{ widget.name }}','write')">
+            Write
+        </button>
+        <button id="preview-{{ widget.name }}-But"
+                type="button"
+                onclick="switchWritePreview('{{ widget.name }}','preview')">
+            Preview
+        </button>
     </div>
     <div class="mdme-container">
-        <textarea class="mdme-tab" id="write" name="{{ widget.name }}">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
-        <div id="preview" class="mdme-tab" style="display:none;"></div>
+        <textarea
+                id="write-{{ widget.name }}"
+                name="{{ widget.name }}"
+                class="mdme-tab"
+                style="min-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em; max-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em;">{% if widget.value %}{{ widget.value }}{% endif %}
+        </textarea>
+        <div
+                id="preview-{{ widget.name }}"
+                class="mdme-tab"
+                style="min-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em; max-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em; display:none;">
+        </div>
     </div>
 </div>
-<script src="{% static 'markdownme/js/highlight.min.js' %}"></script>
-<script src="{% static 'markdownme/js/purify.min.js' %}"></script>
-<script src="{% static 'markdownme/js/marked.min.js' %}"></script>
-<script type="text/javascript">
-    function openTab(tabname) {
-        marked.setOptions({
-                gfm:true,
-                breaks:true,
-                highlight: function(code, lang, callback) {
-                    if(hljs.getLanguage(lang)) {
-                        return hljs.highlight(lang, code).value;
-                    }
-                    else {
-                        return code;
-                    }
-                }
-            });
-        var markdownText = document.getElementById('write').value;
-        var markdownHtml = marked(markdownText);
-        var htmlClean = DOMPurify.sanitize(markdownHtml);
-        document.getElementById('preview').innerHTML = htmlClean;
-        document.getElementById('write').style.display = "none";
-        document.getElementById('preview').style.display = "none";
-        document.getElementById('writeBut').classList.remove("active");
-        document.getElementById('previewBut').classList.remove("active");
-        document.getElementById(tabname).style.display = "block";
-        document.getElementById(tabname+"But").classList.add("active");
-    }
-    django.jQuery(function() {
-        console.log('do something.')
-    });
-</script>

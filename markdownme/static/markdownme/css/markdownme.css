@@ -1,0 +1,94 @@
+.mdme {
+    width: 100vw;
+    max-width: 1000px;
+    display: table-cell;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.mdme-nav {
+    border-bottom: 1px solid #eee;
+    height: 30px;
+    padding-left: 10px;
+}
+.mdme-nav button {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #eee;
+    margin-left: 2px;
+    padding: 6px 20px;
+    margin-top: 4px;
+    font-weight: bold;
+    color: #666;
+}
+.mdme button:focus {
+    outline: 0px;
+}
+.mdme-nav button.active {
+    border-bottom: 0px;
+    padding-bottom: 7px;
+}
+.mdme-container {
+    padding: 0px;
+}
+.mdme-tab {
+    width: 100%;
+    overflow: auto;
+    padding: 6px 6px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 0px 0px;
+    border: 0px;
+}
+.mdme-tab:focus {
+    outline: 0px;
+}
+.mdme p {
+    padding: 0px;
+    line-height: 120%;
+    margin: 0px;
+}
+.mdme ul {
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 40px !important;
+}
+.mdme ul ul {
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
+}
+.mdme ol {
+    margin-top: 1em !important;
+    margin-bottom: 1em !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 40px !important;
+}
+.mdme ol ol {
+    margin-top: 0em !important;
+    margin-bottom: 0em !important;
+}
+.mdme li {
+    padding: 0 0;
+}
+.mdme ul li {
+    display: list-item !important;
+    list-style-type: disc !important;
+}
+.mdme ul li ul li {
+    list-style-type: circle !important;
+}
+.mdme ul li ul li ul li{
+    list-style-type: square !important;
+}
+.mdme pre {
+    font-family: monospace, "Bitstream Vera Sans Mono",Courier, "Courier New";
+    border-radius: 4px;
+    padding: 1em !important;
+    background-color: #f3f3f3 !important;
+    margin: 5px;
+}
+.mdme code {
+    font-family: monospace, "Bitstream Vera Sans Mono",Courier, "Courier New";
+}
