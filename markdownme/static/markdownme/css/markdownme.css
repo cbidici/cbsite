@@ -92,3 +92,9 @@
 .mdme code {
     font-family: monospace, "Bitstream Vera Sans Mono",Courier, "Courier New";
 }
+
+@media (max-width: 1024px) {
+    .mdme-tab {
+        max-width: unset;
+    }
+}
