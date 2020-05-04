@@ -18,8 +18,7 @@
                 id="write-{{ widget.name }}"
                 name="{{ widget.name }}"
                 class="mdme-tab"
-                style="min-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em; max-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em;">{% if widget.value %}{{ widget.value }}{% endif %}
-        </textarea>
+                style="min-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em; max-height: {% for name, value in widget.attrs.items %}{% if name == 'rows' %}{{value}}{% endif %}{% endfor %}em;">{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
         <div
                 id="preview-{{ widget.name }}"
                 class="mdme-tab"
