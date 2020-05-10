@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework import viewsets
+from rest_framework import filters, viewsets
 
 from .models import Post
 from .permissions import IsOwnerOrReadOnlyObject
@@ -18,6 +18,8 @@ class PostViewSet(MultiSerializerViewSetMixin, viewsets.ModelViewSet):
     serializers = {
         'list': PostListSerializer
     }
+    filter_backends = [filters.OrderingFilter]
+    ordering_fields = ['created']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
