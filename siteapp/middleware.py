@@ -10,7 +10,7 @@ class SiteMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        sub = request.META['HTTP_HOST'].split('.')[0]
+        sub = request.META['HTTP_HOST'].split('.')[0].split(':')[0]
         if sub in self.REPLACE_WITH_WWW:
             sub = 'www'
 
