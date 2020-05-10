@@ -19,7 +19,7 @@ class SiteMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         sub = request.META['HTTP_HOST'].split('.')[0].split(':')[0]
         if sub in self.REPLACE_WITH_WWW:
-            sub = 'wwwa'
+            sub = 'www'
 
         try:
             request.site = Site.objects.get(sub_domain=sub)
