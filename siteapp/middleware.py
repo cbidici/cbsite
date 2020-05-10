@@ -1,4 +1,4 @@
-from rest_framework.response import Response
+from django.http.response import JsonResponse
 from rest_framework import status
 
 from .exceptions import SiteNotFoundException
@@ -19,14 +19,14 @@ class SiteMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         sub = request.META['HTTP_HOST'].split('.')[0].split(':')[0]
         if sub in self.REPLACE_WITH_WWW:
-            sub = 'www'
+            sub = 'wwwa'
 
         try:
             request.site = Site.objects.get(sub_domain=sub)
         except Site.DoesNotExist as ex:
             ex = SiteNotFoundException()
             data = {'detail': ex.detail}
-            return Response(data, status=status.HTTP_404_NOT_FOUND)
+            return JsonResponse(data, status=status.HTTP_404_NOT_FOUND)
 
         return None
 
