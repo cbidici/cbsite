@@ -10,6 +10,10 @@ class SiteMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        response = self.get_response(request)
+        return response
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
         sub = request.META['HTTP_HOST'].split('.')[0].split(':')[0]
         if sub in self.REPLACE_WITH_WWW:
             sub = 'www'
@@ -19,5 +23,5 @@ class SiteMiddleware:
         except Site.DoesNotExist as e:
             raise InvalidSiteException from e
 
-        response = self.get_response(request)
-        return response
+        return None
+
