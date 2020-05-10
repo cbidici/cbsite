@@ -1,4 +1,7 @@
-from .exceptions import InvalidSiteException
+from rest_framework.response import Response
+from rest_framework import status
+
+from .exceptions import SiteNotFoundException
 from .models import Site
 
 
@@ -20,8 +23,10 @@ class SiteMiddleware:
 
         try:
             request.site = Site.objects.get(sub_domain=sub)
-        except Site.DoesNotExist as e:
-            raise InvalidSiteException from e
+        except Site.DoesNotExist as ex:
+            ex = SiteNotFoundException()
+            data = {'detail': ex.detail}
+            return Response(data, status=status.HTTP_404_NOT_FOUND)
 
         return None
 
