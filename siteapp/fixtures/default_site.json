@@ -1,0 +1,14 @@
+[
+  {
+    "model": "siteapp.site",
+    "pk": 1,
+    "fields": {
+      "name": "Bıdıcı",
+      "sub_domain": "www",
+      "default_title": "Bıdıcı",
+      "default_description": "Bıdıcı",
+      "created": "2020-01-01T00:00:00.000Z",
+      "updated": "2020-01-01T00:00:00.000Z"
+    }
+  }
+]

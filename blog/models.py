@@ -1,8 +1,9 @@
 from django.db import models
 from markdownme.fields import MarkdownField
+from siteapp.models import SiteModel
 
 
-class Post(models.Model):
+class Post(SiteModel, models.Model):
     title=models.CharField(max_length=512)
     summary=MarkdownField(max_length=500, rows=10)
     text=MarkdownField()

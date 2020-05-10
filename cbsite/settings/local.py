@@ -5,7 +5,7 @@ from .base import *
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 ALLOWED_HOSTS = []
-ALLOW_ORIGIN = "http://127.0.0.1:3000"
+ALLOW_ORIGIN = "http://localhost:3000"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '846^vig%ubw6othjw_d%6@983@e-2_xnrwe&932$0l&n5nr^8#'

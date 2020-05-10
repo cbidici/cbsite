@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'blog.apps.BlogConfig',
+    'siteapp.apps.SiteappConfig',
     'markdownme.apps.MarkdownmeConfig',
 ]
 
@@ -38,7 +39,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'cbsite.middlewares.CorsMiddleware',
+    'cbsite.middleware.CorsMiddleware',
+    'siteapp.middleware.SiteMiddleware'
 ]
 
 ROOT_URLCONF = 'cbsite.urls'
@@ -105,5 +107,5 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ],
 }
