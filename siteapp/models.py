@@ -11,7 +11,7 @@ class Site(models.Model):
 
 
 class SiteModel(models.Model):
-    site = models.ForeignKey(Site, on_delete=models.CASCADE, related_name='posts')
+    site = models.ForeignKey(Site, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
