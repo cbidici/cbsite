@@ -11,7 +11,7 @@ class Site(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'Site: {}'.format(self.name)
+        return self.name
 
 
 class SiteModel(models.Model):
@@ -24,6 +24,9 @@ class SiteModel(models.Model):
 class Tag(SiteModel, models.Model):
     id = models.AutoField(primary_key=True)
     tag = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.tag
 
 
 class TagsModel(models.Model):
