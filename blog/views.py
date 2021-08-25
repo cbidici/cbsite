@@ -26,3 +26,14 @@ class PostViewSet(MultiSerializerViewSetMixin, SiteModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        owner = self.request.query_params.get('owner', None)
+        if owner is not None:
+            queryset = self.queryset.filter(owner__username=owner)
+
+        tag = self.request.query_params.get('tag', None)
+        if tag is not None:
+            queryset = self.queryset.filter(tags__slug=tag)
+        return queryset
