@@ -8,7 +8,9 @@ class SiteAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('code', 'tag')
+    fields = ('slug', 'tag')
+    list_display = ('slug', 'tag')
+    readonly_fields = ('slug',)
 
 
 admin.site.register(Site, SiteAdmin)

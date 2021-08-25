@@ -22,6 +22,7 @@ class PostViewSet(MultiSerializerViewSetMixin, SiteModelViewSet):
     }
     filter_backends = [filters.OrderingFilter, ]
     ordering_fields = ['created']
+    lookup_field = 'slug'
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
