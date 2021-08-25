@@ -8,7 +8,7 @@ class SiteAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('code', 'tag')
 
 
 admin.site.register(Site, SiteAdmin)

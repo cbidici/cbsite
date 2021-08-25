@@ -7,7 +7,6 @@ import markdownme.fields
 class Migration(migrations.Migration):
 
     def set_my_defaults(apps, schema_editor):
-        print('Geldi')
         series = apps.get_model('blog', 'post')
         for element in series.objects.all().iterator():
             element.summary = element.text

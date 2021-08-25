@@ -23,6 +23,7 @@ class SiteModel(models.Model):
 
 class Tag(SiteModel, models.Model):
     id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=128, unique=True)
     tag = models.CharField(max_length=128)
 
     def __str__(self):
