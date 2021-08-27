@@ -1,7 +1,6 @@
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import filters
-
-from siteapp.views import SiteModelViewSet
 
 from .models import Post
 from .permissions import IsOwnerOrReadOnlyObject
@@ -13,7 +12,7 @@ class MultiSerializerViewSetMixin:
         return self.serializers.get(self.action, self.serializer_class)
 
 
-class PostViewSet(MultiSerializerViewSetMixin, SiteModelViewSet):
+class PostViewSet(MultiSerializerViewSetMixin, ModelViewSet):
     permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnlyObject]
     queryset = Post.objects.all()
     serializer_class = PostSerializer

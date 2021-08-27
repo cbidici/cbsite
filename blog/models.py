@@ -1,10 +1,10 @@
 from django.db import models
 from markdownme.fields import MarkdownField
-from siteapp.models import SiteModel, TagsModel
+from siteapp.models import TagsModel
 from slugify import slugify
 
 
-class Post(SiteModel, TagsModel, models.Model):
+class Post(TagsModel, models.Model):
     id = models.AutoField(primary_key=True)
     slug = models.CharField(max_length=512, unique=True)
     title = models.CharField(max_length=512)
