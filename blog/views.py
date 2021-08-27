@@ -2,12 +2,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import filters
 
 from .models import Post
+from siteapp.views import MultiSerializerViewSetMixin
 from .serializers import PostListSerializer, PostSerializer
-
-
-class MultiSerializerViewSetMixin:
-    def get_serializer_class(self):
-        return self.serializers.get(self.action, self.serializer_class)
 
 
 class PostViewSet(MultiSerializerViewSetMixin, ModelViewSet):
