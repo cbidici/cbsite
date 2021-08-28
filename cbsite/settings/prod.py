@@ -26,3 +26,22 @@ DATABASES = {
         'PORT': os.environ['BIDICI_DB_PORT'],
     }
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': './django_error.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['ERROR'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
